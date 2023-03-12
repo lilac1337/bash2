@@ -4,6 +4,7 @@
 #include <sdktools>
 #include <cstrike>
 #include <sdkhooks>
+#include <fnemotes>
 
 #if defined TIMER
 #include <shavit>
@@ -1823,7 +1824,7 @@ MoveType g_mLastMoveType[MAXPLAYERS + 1];
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2])
 {
-	if(!IsFakeClient(client) && IsPlayerAlive(client))
+	if(!IsFakeClient(client) && IsPlayerAlive(client) && !fnemotes_IsClientEmoting(client))
 	{
 		g_iRealButtons[client] = buttons;
 		// Update all information this tick
